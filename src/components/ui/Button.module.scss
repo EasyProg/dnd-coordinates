@@ -1,0 +1,30 @@
+@import '../../global.scss';
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  border: 0.5px solid #a5a4a4;
+  min-width: 30px;
+  border-radius: 3px;
+  background-color: #b4b2b2;
+  font-family: $arial;
+  color: #535353;
+  font-weight: 600;
+  font-size: 14px;
+  outline: none;
+  &:hover {
+    background-color: #d2d0d0;
+    cursor: pointer;
+  }
+  &:focus {
+    border: 2.5px solid #828181;
+  }
+}
+
+.deleteButton {
+  @extend .button;
+  height: 42px;
+  font-size: 20px;
+}

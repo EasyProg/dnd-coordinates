@@ -1,0 +1,19 @@
+@import '../../global.scss';
+
+.input {
+  height: 35px;
+  min-width: 100px;
+  border-radius: 4px;
+  padding: 3px;
+  border: none;
+  color: #8b8b8b;
+  box-shadow: $box-shadow;
+  outline: none;
+  &:focus {
+    box-shadow: $box-shadow-active;
+  }
+}
+
+.dragged {
+  color: rgba(1, 116, 154, 0.721);
+}
