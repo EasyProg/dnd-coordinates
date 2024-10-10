@@ -34,7 +34,7 @@ export const CircleProvider: FC<PropsWithChildren> = ({ children }) => {
 
   const updateCircle = (index: number, x: number, y: number) => {
     const updatedCircles = [...circles];
-    updatedCircles[index] = { x, y };
+    updatedCircles[index] = { ...updatedCircles[index], x, y };
     setCircles(updatedCircles);
   };
 
