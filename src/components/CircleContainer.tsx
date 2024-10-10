@@ -30,7 +30,6 @@ export const CircleContainer: FC = () => {
   const handleMouseMove = (e: MouseEvent) => {
     if (draggingIndex !== null && currentPosition) {
       const fieldRect = fieldRef?.current;
-      const fieldRectCoords = fieldRef?.current?.getBoundingClientRect();
       const draggableCircle = circles[draggingIndex];
       const dx = e.clientX - currentPosition.x;
       const dy = e.clientY - currentPosition.y;
@@ -39,10 +38,7 @@ export const CircleContainer: FC = () => {
       const newY = draggableCircle.y + dy;
 
       // Check if circle is out of range or overlaps another one
-      if (
-        fieldRect &&
-        isValidPosition(draggingIndex, newX, newY, circles, fieldRectCoords, fieldRect)
-      ) {
+      if (fieldRect && isValidPosition(draggingIndex, newX, newY, circles, fieldRect)) {
         updateCircle(draggingIndex, newX, newY);
         setInputValues((prevValues) =>
           prevValues.map((val, i) =>
@@ -67,13 +63,12 @@ export const CircleContainer: FC = () => {
   };
 
   const handleCoordinateBlur = (index: number) => {
-    const boundingRect = fieldRef.current!.getBoundingClientRect();
     const { x, y } = inputValues[index];
     const container = fieldRef.current || undefined;
     const newX = Number(x);
     const newY = Number(y);
 
-    if (isValidPosition(index, newX, newY, circles, boundingRect, container)) {
+    if (isValidPosition(index, newX, newY, circles, container)) {
       updateCircle(index, newX, newY);
       setInputValues((prevValues) =>
         prevValues.map((val, i) => (i === index ? { x: newX, y: newY } : val)),
